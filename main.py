@@ -23,8 +23,8 @@ def create_template(radius):
     return arr
 
 def hough(array, radius):
-    if array.dtype is int:
-        array /= 255
+    if np.issubdtype(array.dtype, np.integer):
+        array = array / 255
     if len(array.shape) == 2:
         return convolve2d(array, create_template(radius), mode = "same")
     conv = np.zeros(array.shape)
